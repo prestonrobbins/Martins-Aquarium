@@ -86,3 +86,10 @@ footer {
 	color: whitesmoke;
 	text-align: center;
 }
+
+
+.list-aside-home {
+	float: right;
+	display: block;
+	max-width: 200px;
+}

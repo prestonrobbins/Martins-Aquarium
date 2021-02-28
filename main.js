@@ -1,4 +1,11 @@
 // import {fishLoopTry} from "./loop.js"
+import {tipsSend} from "./tips-format.js";
+import {tips} from "./tips-list.js";
+
+import {locationSend} from "./location-format.js";
+import {locationArray} from "./location-list.js";
+
+
 const fishCollection = [
 	{
 		saltWater: true,
@@ -221,13 +228,19 @@ const fishCollection = [
 ];
 
 
+
 //this creates a single fish representation
-const fishHTML = (taco) => {
+const fishHTML = (object) => {
     return `
-    <article class="">
-    <h4>${taco.name}</h4>
-    <h4>${taco.harvestLocation}</h4>
-    </article>`
+	<article class="fish-card">
+				<div><img class="fish-image" src="images/bluefish.jpg" /></div>
+				<h3 class="fish-name">Swisher</h3>
+					<li class="fish-details">${object.name}</li>
+					<li class="fish-details">Length: ${object.inches}</li>
+					<li class="fish-details">Found: ${object.harvestLocation}</li>
+					<li class="fish-details">Diet: ${object.diet}</li>
+				</ul>
+        		</article>`
 }
 
 
@@ -239,7 +252,6 @@ const fishHTML = (taco) => {
 //     }
 // }
 
-
 //these are just instructions
 const fishLoopLog = () => {
     const fishSection = document.querySelector(".fishList")
@@ -248,11 +260,42 @@ const fishLoopLog = () => {
     fishListHTML += fishHTML(fish)
     }
     //you can use += to add to whats already there rather than erase our already existing HTML.
-    fishSection.innerHTML += fishListHTML
+    fishSection.innerHTML = fishListHTML
+};
+
+//this is actually doing what we wrote
+fishLoopLog();
+
+
+
+//--------------------------
+
+const listLoopLog = () => {
+    const listSection = document.querySelector(".list-aside-home")
+    let listHTML = ""
+    for (const fish of tips) {
+    listHTML += tipsSend(fish)
+    }
+    //you can use += to add to whats already there rather than erase our already existing HTML.
+    listSection.innerHTML = listHTML
 }
 
 //this is actually doing what we wrote
-fishLoopLog()
+listLoopLog()
+
+
+//import {locationSend} from "./location-format.js";
+// import {locationArray} from "./location-list.js";
 
 
 
+const locationLoopLog = () => {
+    const locationSection = document.querySelector(".locations")
+    let locationHTML = ""
+    for (const lo of locationArray) {
+    locationHTML += locationSend(lo)
+    }
+    //you can use += to add to whats already there rather than erase our already existing HTML.
+    locationSection.innerHTML = locationHTML
+}
+	locationLoopLog();
